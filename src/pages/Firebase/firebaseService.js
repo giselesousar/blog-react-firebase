@@ -6,11 +6,20 @@ export default class FirebaseService {
         let query = firebaseDatabase.ref(nodePath)
                                     .limitToLast(size);
         query.on('value', dataSnapshot => {
-            let items = [];
+            var items = [];
+            var item = [];
             dataSnapshot.forEach(childSnapshot => {
-                let item = childSnapshot.val().title;
-                items.push(item);
+                let key = childSnapshot.key;
+                let title = childSnapshot.val().title;
+                let content = childSnapshot.val().content;
+                let created_at = childSnapshot.val().created_at;
+                let date = new Date(created_at);
+                item.push(key);
+                item.push(title);
+                item.push(content);
+                item.push(date.toLocaleString())
             });
+            items.push(item);
             items.reverse();
             callback(items);
         });

@@ -94,11 +94,13 @@ export default function Admin(){
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
                     />
+                    {/**
                     <select onChange={(e) => setCategory(e.target.value)}>
                         <option defaultValue value="tutorials">Tutorials</option>
                         <option value="frontend">Frontend</option>
                         <option value="backend">Backend</option>
                     </select>
+                     */}
                     <button type="submit">Add</button>
                 </form>
                 <button onClick={handleLogout}>Logout</button>

@@ -6,9 +6,13 @@ export default function CardComponent(props) {
         <Card style={{ width: '18rem' }}>
             {/**<Card.Img variant="top" src="holder.js/100px180" />*/}
             <Card.Body>
-            <Card.Title>Titulo</Card.Title>
+                <Card.Title>{props.title}</Card.Title>
                 <Card.Text>
-                    {props.data}
+                    {props.content}
+                </Card.Text>
+                <hr/>
+                <Card.Text>
+                    {props.date}
                 </Card.Text>
                 <Button variant="primary">Go somewhere</Button>
             </Card.Body>

@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
+import {useHistory} from 'react-router-dom';
 import {firebaseImpl, firebaseDatabase} from '../Firebase/firebaseUtils';
 
 export default function Admin(){
-
+    
+    const history = useHistory();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
@@ -25,10 +27,19 @@ export default function Admin(){
     function handleNewPost(e){
         e.preventDefault();
 
-        firebaseDatabase.ref('posts').push().set({title:title, content:content})
+        firebaseDatabase.ref('posts').push().set({title:title, content:content, created_at: Date.now()})
             .catch(function(err){
                 setError(err);
             })
+    }
+    function handleLogout(){
+        firebaseImpl.auth().signOut()
+        .then(() => {
+            history.push('/')
+        })
+        .catch(function(err){
+            setError(err)
+        })
     }
 
     return(
@@ -52,6 +63,7 @@ export default function Admin(){
             </form>
             }
             {isSignedIn && 
+            <>
                 <form onSubmit={handleNewPost}>
                     <input 
                         type="text"
@@ -66,7 +78,8 @@ export default function Admin(){
                     />
                     <button type="submit">Add</button>
                 </form>
-                
+                <button onClick={handleLogout}>Logout</button>
+                </>
             }
         {error && <p>{error}</p>}
         </div>

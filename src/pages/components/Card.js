@@ -1,20 +1,22 @@
 import React from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button} from 'react-bootstrap';
+import img from '../assets/image.svg';
+import {Link} from 'react-router-dom';
 
 export default function CardComponent(props) {
     return (
         <Card style={{ width: '18rem' }}>
-            {/**<Card.Img variant="top" src="holder.js/100px180" />*/}
+            <Card.Img variant="top" src={img} />
             <Card.Body>
                 <Card.Title>{props.title}</Card.Title>
-                <Card.Text>
-                    {props.content}
-                </Card.Text>
-                <hr/>
+                <hr />
                 <Card.Text>
                     {props.date}
                 </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
+                <Button variant="primary"><Link to={{
+                    pathname: '/post',
+                    state: { title: props.title, content:props.content, date: props.date }
+                }}> See post </Link></Button>
             </Card.Body>
         </Card>
     )

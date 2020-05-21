@@ -5,15 +5,16 @@ export default class FirebaseService {
 
         let query = firebaseDatabase.ref(nodePath)
                                     .limitToLast(size);
-        query.on('value', dataSnapshot => {
+        query.once('value', dataSnapshot => {
             var items = [];
             dataSnapshot.forEach(childSnapshot => {
                 let key = childSnapshot.key;
                 let title = childSnapshot.val().title;
                 let content = childSnapshot.val().content;
+                let visible = childSnapshot.val().visible;
                 let created_at = childSnapshot.val().created_at;
                 let date = new Date(created_at);
-                items.push([key, title, content, date.toLocaleString()]);
+                items.push([key, title, content, date.toLocaleString()], visible);
             });
             items.reverse();
             callback(items);

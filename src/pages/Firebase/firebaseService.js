@@ -14,7 +14,7 @@ export default class FirebaseService {
                 let visible = childSnapshot.val().visible;
                 let created_at = childSnapshot.val().created_at;
                 let date = new Date(created_at);
-                items.push([key, title, content, date.toLocaleString()], visible);
+                items.push([key, title, content, date.toLocaleString(), visible]);
             });
             items.reverse();
             callback(items);

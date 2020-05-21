@@ -13,7 +13,7 @@ export default function CardComponent(props) {
                 <Card.Text>
                     {props.date}
                 </Card.Text>
-                <Button variant="primary"><Link to={{
+                <Button variant="link"><Link to={{
                     pathname: '/post',
                     state: { title: props.title, content:props.content, date: props.date }
                 }}> See post </Link></Button>

@@ -20,7 +20,7 @@ export default function Home(){
             <h3>Latest posts</h3>
             {postData.map(post => {
             return (
-             (post[4]) ? <CardComponent title={post[1]} content={post[2]} date={post[3]} visible={post[4]}/> : <></>
+            post[4] ? <CardComponent title={post[1]} content={post[2]} date={post[3]} visible={post[4]}/> : <></>
             )
          })}
             

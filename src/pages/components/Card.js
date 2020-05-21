@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 
 export default function CardComponent(props) {
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '25rem' }}>
             <Card.Img variant="top" src={img} />
             <Card.Body>
                 <Card.Title>{props.title}</Card.Title>

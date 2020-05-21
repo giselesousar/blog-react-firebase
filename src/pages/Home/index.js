@@ -2,6 +2,9 @@ import React, {useState, useEffect} from 'react';
 import FirebaseService from '../Firebase/firebaseService';
 import {Container, Button} from 'react-bootstrap';
 import CardComponent from '../components/Card';
+import Navbar from '../components/Navbar'
+import './styles.css';
+
 
 export default function Home(){
     const [postData, setPostData] = useState([]);
@@ -15,16 +18,27 @@ export default function Home(){
         FirebaseService.getDataList('posts', (dataReceived) => setPostData(dataReceived), numberPosts);
     }) 
     return(
+        <>
+        <Navbar />
         <Container>
-            <h1>Home</h1>
             <h3>Latest posts</h3>
+            <Container style={{display: "inline"}}>
             {postData.map(post => {
             return (
-            post[4] ? <CardComponent title={post[1]} content={post[2]} date={post[3]} visible={post[4]}/> : <></>
+            post[4] ? <CardComponent 
+                        className="card" 
+                        title={post[1]} 
+                        content={post[2]} 
+                        date={post[3]} 
+                        visible={post[4]}
+                    />
+            : <></>
             )
          })}
+         </Container>
             
             <Button onClick={handleShowMore}>Show more</Button>
         </Container>
+        </>
     )
 }

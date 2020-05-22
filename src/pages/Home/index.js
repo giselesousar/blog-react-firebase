@@ -4,11 +4,14 @@ import {Container, Button} from 'react-bootstrap';
 import CardComponent from '../components/Card';
 import Navbar from '../components/Navbar'
 import './styles.css';
+import FooterComponent from '../components/Footer';
+
 
 
 export default function Home(){
     const [postData, setPostData] = useState([]);
     const [numberPosts, setNumberPosts] = useState(10);
+    const [isDisabled, setIsDisabled] = useState(true);
 
     function handleShowMore(){
         setNumberPosts(numberPosts + 10);
@@ -20,9 +23,13 @@ export default function Home(){
     return(
         <>
         <Navbar />
-        <Container>
+        <Container style={{
+            height:"30em",
+        }}>
             <h3>Latest posts</h3>
-            <Container style={{display: "inline"}}>
+            <Container style={{
+                minHeight:"25rem"
+            }}>
             {postData.map(post => {
             return (
             post[4] ? <CardComponent 
@@ -36,9 +43,15 @@ export default function Home(){
             )
          })}
          </Container>
-            
-            <Button onClick={handleShowMore}>Show more</Button>
+            <Container style={{
+                textAlign: "center",
+                position: "fixed",
+                marginBottom: "0"
+            }}>
+            <Button variant="secondary" disabled={isDisabled} onClick={handleShowMore}>Show more</Button>
+            </Container>
         </Container>
+        <FooterComponent />
         </>
     )
 }

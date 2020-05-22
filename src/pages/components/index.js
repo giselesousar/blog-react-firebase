@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { firebaseImpl, firebaseDatabase } from '../Firebase/firebaseUtils';
-import { Form, Button, Spinner, Row, Col, Navbar } from 'react-bootstrap';
-import TableComponent from '../components/Table';
+import { Container, Form, Button, Spinner, Row, Col, Navbar } from 'react-bootstrap';
+import TableComponent from './Table';
 import './styles.css';
 
 export default function Admin() {
@@ -68,25 +68,35 @@ export default function Admin() {
     return (
         <div>
            
-            {!isSignedIn && !loading &&
+            {!isSignedIn &&
+            <Container fluid className="center-block">
+                <h1>Admin Page</h1>
+                <Container className="form-login-container justify-content-center">
                 <Form onSubmit={handleSubmit}>
                     <Form.Control
                         type="email"
                         placeholder="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        required
+                        style={{marginBottom:"5px"}}
                     />
                     <Form.Control
                         type="password"
                         placeholder="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        required
+                        style={{marginBottom:"5px"}}
                     />
-                    <Button type="submit">sign in</Button>
+                    <Button style={{width: "100%", marginBottom:"10px"}} type="submit">sign in</Button>
                 </Form>
+                </Container>
+                {loading && <Spinner animation="border" variant="primary" />
             }
-            {!isSignedIn && loading && <Spinner animation="border" variant="primary" />
+                </Container>
             }
+            
             {isSignedIn &&
                 <>
                  <Navbar>

@@ -5,6 +5,12 @@
     .form-newpost{
         width: 90%;
     }
+    .form-login-container{
+        width: 90%;
+    }
+    .center-block{
+        margin: 13em 0 5em 0;
+    }
 }
 @media only screen and (min-width: 768px){
   .coluna-1{
@@ -13,5 +19,23 @@
   .form-newpost{
       width: 70%;
   }
+  .form-login-container{
+      width: 30%;
+  }
+  .center-block{
+    margin: 13em 0 0 5em;
+}
     
+}
+.form-login-input{
+    margin-bottom: 5px;
+}
+.center-block{
+    text-align: center;
+}
+h1{
+    margin-bottom: 25px;
+}
+.form-textarea{
+    resize: none;
 }

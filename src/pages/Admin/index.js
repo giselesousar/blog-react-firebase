@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { firebaseImpl, firebaseDatabase } from '../Firebase/firebaseUtils';
-import { Form, Button, Spinner, Row, Col, Navbar } from 'react-bootstrap';
+import { Container, Form, Button, Spinner, Row, Col, Navbar, Modal } from 'react-bootstrap';
 import TableComponent from '../components/Table';
 import './styles.css';
+
 
 export default function Admin() {
 
@@ -67,66 +68,89 @@ export default function Admin() {
 
     return (
         <div>
-           
-            {!isSignedIn && !loading &&
-                <Form onSubmit={handleSubmit}>
-                    <Form.Control
-                        type="email"
-                        placeholder="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <Form.Control
-                        type="password"
-                        placeholder="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <Button type="submit">sign in</Button>
-                </Form>
-            }
-            {!isSignedIn && loading && <Spinner animation="border" variant="primary" />
+
+            {!isSignedIn &&
+                <Container className="center-block">
+                    <h1>Admin Page</h1>
+                    <Container className="form-login-container justify-content-center">
+                        <Form onSubmit={handleSubmit}>
+                            <Form.Control
+                                type="email"
+                                placeholder="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                                className="form-login-input"
+                            />
+                            <Form.Control
+                                type="password"
+                                placeholder="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                                className="form-login-input"
+                            />
+                            <Button style={{ width: "100%", marginBottom: "10px" }} type="submit">sign in</Button>
+                        </Form>
+                    </Container>
+                    {loading && <Container className="loading-container"><Spinner animation="border" variant="primary" /></Container>}
+                </Container>
             }
             {isSignedIn &&
                 <>
-                 <Navbar>
-                <Navbar.Brand href="#home">Admin Page</Navbar.Brand>
-                <Navbar.Toggle />
-                <Navbar.Collapse className="justify-content-end">
-                    <Navbar.Text>
-                        <Button onClick={handleLogout} >Logout</Button>
-                    </Navbar.Text>
-                </Navbar.Collapse>
-            </Navbar>
-                <Row>
-                    <Col className="coluna-1">
-                        <Form onSubmit={handleNewPost} className="form-newpost">
-                            <Form.Group>
-                                <Form.Control
-                                    type="text"
-                                    placeholder="title"
-                                    value={title}
-                                    onChange={(e) => setTitle(e.target.value)}
-                                    required
-                                />
-                                <Form.Control
-                                    as="textarea"
-                                    placeholder="content"
-                                    value={content}
-                                    onChange={(e) => setContent(e.target.value)}
-                                    required
-                                />
-                            </Form.Group>
-                            <Form.Group controlId="formBasicCheckbox">
-                                <Form.Check checked={isChecked} type="checkbox" onChange={handleChecked} label="Visible" />
-                            </Form.Group>
-                            <Button type="submit">Add</Button>
-                        </Form>
-                    </Col>
-                    <Col className="coluna-2">
-                        <TableComponent />
-                    </Col>
-                </Row>
+                    <Navbar>
+                        <Navbar.Brand >Admin Page</Navbar.Brand>
+                        <Navbar.Toggle />
+                        <Navbar.Collapse className="justify-content-end">
+                            <Navbar.Text>
+                                <Button onClick={handleLogout} >Logout</Button>
+                            </Navbar.Text>
+                        </Navbar.Collapse>
+                    </Navbar>
+                    <Row>
+                        <Col className="col-2">
+                            <Form onSubmit={handleNewPost} className="form-newpost">
+                                <Form.Group>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="title"
+                                        value={title}
+                                        onChange={(e) => setTitle(e.target.value)}
+                                        required
+                                    />
+                                    <Form.Control
+                                        as="textarea"
+                                        placeholder="content"
+                                        value={content}
+                                        onChange={(e) => setContent(e.target.value)}
+                                        required
+                                        className="form-textarea"
+                                    />
+                                </Form.Group>
+                                <Form.Group controlId="formBasicCheckbox">
+                                    <Form.Check checked={isChecked} type="checkbox" onChange={handleChecked} label="Visible" />
+                                </Form.Group>
+                                <Button type="submit">Add</Button>
+                            </Form>
+                        </Col>
+                        <Col className="coluna-2">
+                            <TableComponent />
+                        </Col>
+                    </Row>
+                    <Modal.Dialog>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Modal title</Modal.Title>
+                        </Modal.Header>
+
+                        <Modal.Body>
+                            <p>Modal body text goes here.</p>
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button variant="secondary">Close</Button>
+                            <Button variant="primary">Save changes</Button>
+                        </Modal.Footer>
+                    </Modal.Dialog>
                 </>
             }
             {error && <p>{error}</p>}

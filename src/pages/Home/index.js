@@ -24,11 +24,12 @@ export default function Home(){
         <>
         <Navbar />
         <Container style={{
-            height:"30em",
+            marginTop:"5em",
+            minHeight: "30em",
         }}>
             <h3>Latest posts</h3>
             <Container style={{
-                minHeight:"25rem"
+                minHeight:"100%"
             }}>
             {postData.map(post => {
             return (
@@ -42,16 +43,16 @@ export default function Home(){
             : <></>
             )
          })}
+         <Button variant="secondary" disabled={isDisabled} onClick={handleShowMore}>Show more</Button>
          </Container>
             <Container style={{
                 textAlign: "center",
                 position: "fixed",
                 marginBottom: "0"
             }}>
-            <Button variant="secondary" disabled={isDisabled} onClick={handleShowMore}>Show more</Button>
             </Container>
         </Container>
-        <FooterComponent />
+    <FooterComponent />
         </>
     )
 }

@@ -1,10 +1,10 @@
 import React from 'react';
-import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 
 export default function NavbarComponent() {
   return (
-    <Navbar style={{
-      backgroundColor: "#dc3545",
+    <Navbar fixed="top" style={{
+      backgroundColor: "red",
     }} expand="lg">
       <Container>
         <Navbar.Brand style={{color: "#fff"}} href="#home">Blog</Navbar.Brand>

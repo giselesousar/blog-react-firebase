@@ -23,10 +23,7 @@ export default function Home(){
     return(
         <>
         <Navbar />
-        <Container style={{
-            marginTop:"5em",
-            minHeight: "30em",
-        }}>
+        <Container  className="content-center">
             <h3>Latest posts</h3>
             <Container style={{
                 minHeight:"100%"

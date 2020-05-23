@@ -8,7 +8,7 @@ export default function Post(props){
     return(
         <>
         <Navbar />
-        <Container>
+        <Container className="content-center" >
             <h1>{props.location.state.title}</h1>
             <hr/>
             <strong>{props.location.state.date}</strong>

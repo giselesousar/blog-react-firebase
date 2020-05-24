@@ -1,6 +1,16 @@
 import {firebaseDatabase} from './firebaseUtils'
 
 export default class FirebaseService {
+
+    static getCount = (nodePath, callback) => {
+        let query = firebaseDatabase.ref(nodePath);
+        query.once('value', dataSnapshot => {
+            let count = dataSnapshot.numChildren();
+            callback(count);
+        });
+        return query;
+    }
+
     static getDataList = (nodePath, callback,size = 10) => {
 
         let query = firebaseDatabase.ref(nodePath)

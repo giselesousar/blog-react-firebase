@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 
 export default function CardComponent(props) {
     return (
-        <Card style={{ width: '25rem' }}>
+        <Card inline style={{ width: '20rem' }} className="shadow-sm">
             <Card.Img variant="top" src={img} />
             <Card.Body>
                 <Card.Title>{props.title}</Card.Title>
@@ -13,7 +13,7 @@ export default function CardComponent(props) {
                 <Card.Text>
                     {props.date}
                 </Card.Text>
-                <Button variant="link"><Link to={{
+                <Button style={{backgroundColor: "#8aa163", borderColor: "transparent"}}><Link style= {{color: "#fff"}} to={{
                     pathname: '/post',
                     state: { title: props.title, content:props.content, date: props.date }
                 }}> See post </Link></Button>

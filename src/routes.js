@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import Home from './pages/Home';
 import Post from './pages/Post';
-import Admin from './pages/components';
+import Admin from './pages/Admin';
 
 
 export default function Routes(){

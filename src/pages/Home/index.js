@@ -35,7 +35,7 @@ export default function Home(){
             }}>
                 <Row className="justify-content-center"
                 style={{
-                    marginTop: "5em",
+                    marginTop: "3em",
                     textAlign:"center"
                 }}
                 >
@@ -48,6 +48,7 @@ export default function Home(){
                         content={post[2]} 
                         date={post[3]} 
                         visible={post[4]}
+                        img={post[5]}
                     /> </Col>
                         : <></>
             )

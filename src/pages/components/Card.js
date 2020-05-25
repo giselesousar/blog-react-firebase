@@ -1,12 +1,11 @@
 import React from 'react';
 import { Card, Button} from 'react-bootstrap';
-import img from '../assets/image.svg';
 import {Link} from 'react-router-dom';
 
 export default function CardComponent(props) {
     return (
         <Card inline style={{ width: '20rem' }} className="shadow-sm">
-            <Card.Img variant="top" src={img} />
+            <Card.Img variant="top" src={props.img} />
             <Card.Body>
                 <Card.Title>{props.title}</Card.Title>
                 <hr />

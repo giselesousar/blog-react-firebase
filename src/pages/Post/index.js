@@ -13,7 +13,9 @@ export default function Post(props){
             <hr/>
             <strong>{props.location.state.date}</strong>
             <hr/>
-            <Image src={img} style={{width: "80%"}} fluid />
+            <Container className="justify-content-center" style={{textAlign:"center"}}>
+            <Image src={img} style={{width: "60%"}} fluid />
+            </Container>
             <p>{props.location.state.content}</p>
         </Container>
         <FooterComponent />

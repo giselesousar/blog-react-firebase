@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { firebaseImpl, firebaseDatabase } from '../Firebase/firebaseUtils';
-import { Container, Form, Button, Spinner, Row, Col, Navbar } from 'react-bootstrap';
-import TableComponent from './Table';
+import { firebaseImpl, firebaseDatabase, firebaseStorage } from '../Firebase/firebaseUtils';
+import { Container, Form, Button, Spinner, Row, Col, Navbar, Image } from 'react-bootstrap';
+import TableComponent from '../components/Table';
 import './styles.css';
 
 export default function Admin() {
@@ -14,8 +14,10 @@ export default function Admin() {
     const [isSignedIn, setIsSignedIn] = useState(false);
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
+    const [imageAsFile, setImageAsFile] = useState('')
     const [loading, setLoading] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
+ 
 
     //const [category, setCategory] = useState('');
 
@@ -42,7 +44,8 @@ export default function Admin() {
     function handleNewPost(e) {
         e.preventDefault();
 
-        firebaseDatabase.ref('posts').push().set({ title: title, content: content, created_at: Date.now(), visible: isChecked })
+        var ref = firebaseDatabase.ref('posts').push();
+        ref.set({ title: title, content: content, created_at: Date.now(), visible: isChecked })
             .then(() => {
                 setTitle('');
                 setContent('');
@@ -51,6 +54,12 @@ export default function Admin() {
             .catch(function (err) {
                 setError(err);
             })
+        var key = ref.key;
+        firebaseStorage.ref(`/images/${key}`).put(imageAsFile)
+            .catch(function(err){
+                setError(err);
+            });
+
     }
     function handleLogout() {
         firebaseImpl.auth().signOut()
@@ -64,6 +73,10 @@ export default function Admin() {
     function handleChecked() {
         isChecked ? setIsChecked(false) : setIsChecked(true);
     }
+    function handleImage(e){
+        const image = e.target.files[0]
+        setImageAsFile(imageFile => (image))
+    };
 
     return (
         <div>
@@ -130,8 +143,13 @@ export default function Admin() {
                             <Form.Group controlId="formBasicCheckbox">
                                 <Form.Check checked={isChecked} type="checkbox" onChange={handleChecked} label="Visible" />
                             </Form.Group>
+                            <Form.File id="formcheck-api-regular">
+                                <Form.File.Label>Adicionar imagem</Form.File.Label>
+                                <Form.File.Input accept='image/*' required onChange={handleImage}/>
+                            </Form.File>
                             <Button type="submit">Add</Button>
                         </Form>
+                        <Image style={{width: "60%"}} />
                     </Col>
                     <Col className="coluna-2">
                         <TableComponent />

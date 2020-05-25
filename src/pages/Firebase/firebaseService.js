@@ -1,4 +1,4 @@
-import {firebaseDatabase} from './firebaseUtils'
+import {firebaseDatabase, firebaseStorage} from './firebaseUtils'
 
 export default class FirebaseService {
 
@@ -24,8 +24,15 @@ export default class FirebaseService {
                 let visible = childSnapshot.val().visible;
                 let created_at = childSnapshot.val().created_at;
                 let date = new Date(created_at);
-                items.push([key, title, content, date.toLocaleString(), visible]);
+                var pathReference = firebaseStorage.ref();
+                pathReference.child(`images/${key}`).getDownloadURL().then(function(url) {
+                    items.push([key, title, content, date.toLocaleString(), visible, url]);
+                  }).catch(function(error) {
+                    // Handle any errors
+                  });
+                
             });
+           
             items.reverse();
             callback(items);
         });

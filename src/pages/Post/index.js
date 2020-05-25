@@ -9,14 +9,14 @@ export default function Post(props){
     return(
         <>
         <Navbar />
-        <Container className="content-center" >
+        <Container className="content-center" style={{width:"50%"}} >
             <h1>{/**props.location.state.title*/} Substantivo</h1>
-            <strong>{/**props.location.state.date*/} May 25, 2020. 14:30 PM</strong>
+            <span>{/**props.location.state.date*/} May 25, 2020. 14:30 PM</span>
             <hr/>
-            <Container className="justify-content-center image" style={{textAlign:"center"}}>
+            <div className="justify-content-center image" style={{textAlign:"center"}}>
                 <Image src={img} className="image" style={{}} fluid />
-            </Container>
-            <Container className="paragrafo-container" style={{marginTop: "3em"}}>
+            </div>
+            <div className="paragrafo-container" style={{marginTop: "3em"}}>
                 <p>{/**props.location.state.content*/} Substantivo é uma classe de palavras que nomeia seres, objetos, fenômenos, lugares, qualidades, ações, dentre outros.</p>
 
                 <p>Eles podem ser flexionados em gênero (masculino e feminino), número (singular e plural) e grau (aumentativo e diminutivo).</p>
@@ -64,7 +64,7 @@ Exemplos: casarão (derivado de casa), folhagem (derivado de folha), chuvarada (
 
 <p>9. Substantivo Coletivo
 Os substantivos coletivos são aqueles que se referem a um conjunto de seres.</p>
-            </Container>
+            </div>
         </Container>
         <FooterComponent />
         </>

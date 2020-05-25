@@ -55,7 +55,7 @@ export default function Admin() {
                 setError(err);
             })
         var key = ref.key;
-        firebaseStorage.ref(`/images/${key}`).put(imageAsFile)
+        firebaseStorage.ref().child(`/images/${key}.png`).put(imageAsFile)
             .catch(function(err){
                 setError(err);
             });

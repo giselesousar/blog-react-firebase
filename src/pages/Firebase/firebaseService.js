@@ -24,12 +24,12 @@ export default class FirebaseService {
                 let visible = childSnapshot.val().visible;
                 let created_at = childSnapshot.val().created_at;
                 let date = new Date(created_at);
-                var pathReference = firebaseStorage.ref();
-                pathReference.child(`images/${key}`).getDownloadURL().then(function(url) {
+                firebaseStorage.ref().child(`images/${key}.png`).getDownloadURL()
+                .then(function(url) {
                     items.push([key, title, content, date.toLocaleString(), visible, url]);
-                  }).catch(function(error) {
-                    // Handle any errors
-                  });
+                }).catch(function(error) {
+                });
+
                 
             });
            

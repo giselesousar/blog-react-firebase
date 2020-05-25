@@ -34,6 +34,7 @@ export default function TableComponent() {
                     <th>Key</th>
                     <th>Title</th>
                     <th>Date</th>
+                    <th>url</th>
                     <th></th>
                 </tr>
             </thead>
@@ -44,6 +45,7 @@ export default function TableComponent() {
                     <td>{post[0]}</td>
                     <td>{post[1]}</td>
                     <td>{post[3]}</td>
+                    <td>{post[5]}</td>
                     <td><Button variant="link" onClick={() => handleDeletePost(post[0])}>Delete</Button><Button variant="link">Edit</Button></td>
                 </tr>
             )

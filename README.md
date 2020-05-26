@@ -12,6 +12,9 @@ This is a simple blog built with React and Firebase.
   - Cd into root project and type `npm install` to install all the dependecies.
 * Run the project
   - Type `npm start` and open http://localhost:3000 to view it in the browser.
+## Current structure
+[database](/assets/database.png)
+
 ## Features
 
 ## License

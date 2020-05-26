@@ -25,7 +25,7 @@ export default function Home(){
     return(
         <>
         <Navbar />
-        <Container  className="content-center">
+        <Container className="content">
             <Container style={{textAlign: "center"}} className="top-page justify-content-center">
                 <h3>Latest posts</h3>
             </Container>
@@ -48,7 +48,6 @@ export default function Home(){
                         content={post[2]} 
                         date={post[3]} 
                         visible={post[4]}
-                        img={post[5]}
                     /> </Col>
                         : <></>
             )

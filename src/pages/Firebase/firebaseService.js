@@ -26,9 +26,10 @@ export default class FirebaseService {
                 let date = new Date(created_at);
                 firebaseStorage.ref().child(`images/${key}.png`).getDownloadURL()
                 .then(function(url) {
-                    items.push([key, title, content, date.toLocaleString(), visible, url]);
                 }).catch(function(error) {
                 });
+                items.push([key, title, content, date.toLocaleString(), visible]);
+
 
                 
             });

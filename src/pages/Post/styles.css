@@ -1,14 +1,12 @@
 @media only screen and (max-width: 768px){
-    .paragrafo-container{
-        width: 100%;
+    .content-center{
+        width:90%;
     }
 
 }
 @media only screen and (min-width: 768px){
-    .paragrafo-container{
-    }
-    .image{
-        width: 100%;
+    .content-center{
+        width:50%;
     }
 
 }

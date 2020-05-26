@@ -14,7 +14,7 @@ export default function Admin() {
     const [isSignedIn, setIsSignedIn] = useState(false);
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
-    const [imageAsFile, setImageAsFile] = useState('')
+    //const [imageAsFile, setImageAsFile] = useState('')
     const [loading, setLoading] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
  
@@ -54,11 +54,13 @@ export default function Admin() {
             .catch(function (err) {
                 setError(err);
             })
+        /**    
         var key = ref.key;
-        firebaseStorage.ref().child(`/images/${key}.png`).put(imageAsFile)
+        firebaseStorage.ref().child(`images/${key}.png`).put(imageAsFile)
             .catch(function(err){
                 setError(err);
             });
+         */
 
     }
     function handleLogout() {
@@ -73,10 +75,11 @@ export default function Admin() {
     function handleChecked() {
         isChecked ? setIsChecked(false) : setIsChecked(true);
     }
-    function handleImage(e){
+   /** function handleImage(e){
         const image = e.target.files[0]
         setImageAsFile(imageFile => (image))
     };
+     */
 
     return (
         <div>
@@ -143,10 +146,10 @@ export default function Admin() {
                             <Form.Group controlId="formBasicCheckbox">
                                 <Form.Check checked={isChecked} type="checkbox" onChange={handleChecked} label="Visible" />
                             </Form.Group>
-                            <Form.File id="formcheck-api-regular">
+                            {/**<Form.File id="formcheck-api-regular">
                                 <Form.File.Label>Adicionar imagem</Form.File.Label>
                                 <Form.File.Input accept='image/*' required onChange={handleImage}/>
-                            </Form.File>
+                            </Form.File>*/}
                             <Button type="submit">Add</Button>
                         </Form>
                         <Image style={{width: "60%"}} />

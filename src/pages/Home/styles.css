@@ -1,3 +1,7 @@
 .card{
     margin-bottom: 3em !important;
 }
+.content{
+    margin-top:7em;
+    min-height: 30em;
+}

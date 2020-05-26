@@ -1,0 +1,10 @@
+.links:hover{
+    color:#e5e5e5;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.links-post:hover{
+    color:#e5e5e5 !important;
+    text-decoration: none;
+    transition: 0.2s;
+}

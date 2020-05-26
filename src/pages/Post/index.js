@@ -3,7 +3,6 @@ import {Container, Image} from 'react-bootstrap';
 //import img from '../assets/image.svg'
 import Navbar from '../components/Navbar'
 import FooterComponent from '../components/Footer';
-import './styles.css'
 export default function Post(props){
 
     return(

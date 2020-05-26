@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 
 export default function CardComponent(props) {
     return (
-        <Card inline style={{ width: '30rem' }} className="shadow-sm">
+        <Card inline className="shadow-sm card">
             {/**<Card.Img variant="top" src={img} />*/}
             <Card.Body>
                 <Card.Title>{props.title}</Card.Title>

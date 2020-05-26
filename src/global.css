@@ -9,3 +9,27 @@ body{
 .links{
     color: #fff;
 }
+@media only screen and (max-width: 768px){
+    .content-center{
+        width:90%;
+    }
+    .card{
+        width: 18rem 
+    }
+
+
+}
+@media only screen and (min-width: 768px){
+    .content-center{
+        width:50%;
+    }
+    .card{
+        width: 30rem 
+    }
+    .row-container{
+        margin-left: 1em;
+    }
+}
+.card{
+    margin-bottom: 3em !important;
+}

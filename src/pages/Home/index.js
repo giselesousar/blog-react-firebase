@@ -33,10 +33,10 @@ export default function Home(){
                 minHeight:"20rem",
                 textAlign: "center"
             }}>
-                <Row className="justify-content-center"
+                <Row className="justify-content-center row-container"
                 style={{
                     marginTop: "3em",
-                    textAlign:"center"
+                    textAlign:"center",
                 }}
                 >
                     

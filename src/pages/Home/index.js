@@ -42,12 +42,12 @@ export default function Home(){
                     
             {postData.map((post) => {
             return (
-            (post[4]) ? <Col> <CardComponent 
+            (post.visible) ? <Col> <CardComponent 
                         className="card" 
-                        title={post[1]} 
-                        content={post[2]} 
-                        date={post[3]} 
-                        slug={post[5]}
+                        title={post.title} 
+                        content={post.content} 
+                        date={post.created_at} 
+                        slug={post.slug}
                     /> </Col>
                         : <></>
             )

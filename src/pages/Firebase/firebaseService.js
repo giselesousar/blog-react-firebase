@@ -18,20 +18,22 @@ export default class FirebaseService {
         query.once('value', dataSnapshot => {
             var items = [];
             dataSnapshot.forEach(childSnapshot => {
-                let key = childSnapshot.key;
-                let title = childSnapshot.val().title;
-                let content = childSnapshot.val().content;
-                let visible = childSnapshot.val().visible;
-                let created_at = childSnapshot.val().created_at;
-                let slug = childSnapshot.val().slug;
-                let date = new Date(created_at);
+
+                let post = {
+                    key: childSnapshot.key,
+                    title: childSnapshot.val().title,
+                    content: childSnapshot.val().content,
+                    visible: childSnapshot.val().visible,
+                    created_at: (new Date(childSnapshot.val().created_at)).toString().replace("GMT-0300 (Horário Padrão de Brasília)", ''),
+                    slug: childSnapshot.val().slug
+                }
+                /**
                 firebaseStorage.ref().child(`images/${key}.png`).getDownloadURL()
                 .then(function(url) {
                 }).catch(function(error) {
                 });
-                items.push([key, title, content, date.toLocaleString(), visible, slug]);
-
-
+                 */
+                items.push(post);
                 
             });
            

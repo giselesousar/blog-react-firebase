@@ -23,12 +23,13 @@ export default class FirebaseService {
                 let content = childSnapshot.val().content;
                 let visible = childSnapshot.val().visible;
                 let created_at = childSnapshot.val().created_at;
+                let slug = childSnapshot.val().slug;
                 let date = new Date(created_at);
                 firebaseStorage.ref().child(`images/${key}.png`).getDownloadURL()
                 .then(function(url) {
                 }).catch(function(error) {
                 });
-                items.push([key, title, content, date.toLocaleString(), visible]);
+                items.push([key, title, content, date.toLocaleString(), visible, slug]);
 
 
                 

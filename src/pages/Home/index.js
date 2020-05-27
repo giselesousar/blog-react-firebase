@@ -47,7 +47,7 @@ export default function Home(){
                         title={post[1]} 
                         content={post[2]} 
                         date={post[3]} 
-                        visible={post[4]}
+                        slug={post[5]}
                     /> </Col>
                         : <></>
             )

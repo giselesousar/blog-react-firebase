@@ -4,6 +4,7 @@ import { firebaseImpl, firebaseDatabase, firebaseStorage } from '../Firebase/fir
 import { Container, Form, Button, Spinner, Row, Col, Navbar, Image } from 'react-bootstrap';
 import TableComponent from '../components/Table';
 import './styles.css';
+import slugify from 'slugify';
 
 export default function Admin() {
 
@@ -45,7 +46,8 @@ export default function Admin() {
         e.preventDefault();
 
         var ref = firebaseDatabase.ref('posts').push();
-        ref.set({ title: title, content: content, created_at: Date.now(), visible: isChecked })
+        const slug = slugify(title);
+        ref.set({ title: title, slug: slug, content: content, created_at: Date.now(), visible: isChecked })
             .then(() => {
                 setTitle('');
                 setContent('');

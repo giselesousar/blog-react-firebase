@@ -11,7 +11,7 @@ export default function Routes(){
         <BrowserRouter>
             <Switch>
                 <Route path={process.env.PUBLIC_URL + '/'} exact component={Home}/>
-                <Route path={process.env.PUBLIC_URL + '/post'} exact component={Post}/>
+                <Route path={process.env.PUBLIC_URL + '/post/:slug'} exact component={Post}/>
                 <Route path={process.env.PUBLIC_URL + "/admin"} component={Admin}/>
             </Switch>
         </BrowserRouter>

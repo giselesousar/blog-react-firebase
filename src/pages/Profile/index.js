@@ -7,7 +7,7 @@ export default function Profile(){
     const user = useContext(UserContext);
     return(
         <>
-        {user ? <h1>profile</h1> : <Redirect to="/"/>}
+        {user ? <h1>{`Olá, ${user.firstName}!`}</h1> : <Redirect to="/"/>}
         </>
         
     )

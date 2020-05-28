@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Container, Form, Button, Spinner} from 'react-bootstrap';
 import {firebaseAuth} from '../Firebase/firebaseUtils';
-import {useHistory} from 'react-router-dom';
+import {useHistory, Link} from 'react-router-dom';
 
 export default function SignIn(){
 
@@ -49,10 +49,20 @@ export default function SignIn(){
                 required
                 style={{marginBottom:"5px"}}
             />
-            <Button style={{width: "100%", marginBottom:"10px"}} type="submit">sign in</Button>
+            <Button style={{width: "100%", marginBottom:"10px", height: "3em"}} type="submit">{loading ? <Spinner animation="border" variant="light"  /> : "sign in"}</Button>
         </Form>
+        <div style={{marginBottom: "10px"}} className="text-center my-3">
+          Don't have an account?{" "}
+          <Link to="/signup" className="text-blue-500 hover:text-blue-600">
+            Sign up here
+          </Link>{" "}
+          <br />{" "}
+          <Link to="/pw-reset" className="text-blue-500 hover:text-blue-600">
+            Forgot Password?
+          </Link>
+        </div>
         </Container>
-        {loading && <Spinner animation="border" variant="primary" />}
+        
         </Container>
     )
 }

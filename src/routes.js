@@ -8,6 +8,8 @@ import Home from './pages/Home';
 import Post from './pages/Post';
 import Admin from './pages/Admin';
 import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
+import PwReset from './pages/PwReset';
 
 
 export default function Routes(){
@@ -21,6 +23,8 @@ export default function Routes(){
                 <Route path={process.env.PUBLIC_URL + '/post/:slug'} exact component={Post}/>
                 <Route path={process.env.PUBLIC_URL + "/admin"} component={Admin}/>
                 <Route path={process.env.PUBLIC_URL + "/signin"} component={SignIn}/>
+                <Route path={process.env.PUBLIC_URL + "/signup"} component={SignUp}/>
+                <Route path={process.env.PUBLIC_URL + "/pw-reset"} component={PwReset}/>
             </Switch>
         </BrowserRouter>
     </UserProvider>

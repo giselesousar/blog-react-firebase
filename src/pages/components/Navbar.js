@@ -15,6 +15,7 @@ export default function NavbarComponent() {
           <Nav style={{ width: "100%" }} className="mr-auto justify-content-end">
             <Nav.Link style={{color: "#fff"}}><Link className="links" to="/">Home</Link></Nav.Link>
             <Nav.Link style={{color: "#fff"}}><Link className="links" to="/about">About</Link></Nav.Link>
+            <Nav.Link style={{color: "#fff"}}><Link className="links" to="/signin">Login</Link></Nav.Link>
             {/**<NavDropdown title="Category" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Tutorials</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Frontend</NavDropdown.Item>

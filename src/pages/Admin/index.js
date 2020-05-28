@@ -110,8 +110,7 @@ export default function Admin() {
                     <Button style={{width: "100%", marginBottom:"10px"}} type="submit">sign in</Button>
                 </Form>
                 </Container>
-                {loading && <Spinner animation="border" variant="primary" />
-            }
+                {loading && <Spinner animation="border" variant="primary" />}
                 </Container>
             }
             

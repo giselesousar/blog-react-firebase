@@ -27,7 +27,7 @@ export default function SignUp() {
                   .then(() => {
                 })
                 .catch(function (err) {
-                    setError(err);
+                    setError(err.message);
                 })
                 setFirstName('');
                 setLastName('');

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {Container, Form, Button, Spinner} from 'react-bootstrap';
-import {firebaseAuth} from '../Firebase/firebaseUtils';
+import {firebaseAuth} from '../../Firebase/firebaseUtils';
 import {useHistory, Link} from 'react-router-dom';
 
 export default function SignIn(){

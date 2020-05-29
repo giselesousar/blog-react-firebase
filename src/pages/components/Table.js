@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Table, Button } from 'react-bootstrap';
-import FirebaseService from '../Firebase/firebaseService';
-import {firebaseDatabase} from '../Firebase/firebaseUtils'
+import FirebaseService from '../../Firebase/firebaseService';
+import {firebaseDatabase, firebaseAuth} from '../../Firebase/firebaseUtils'
 
 export default function TableComponent() {
     const [postData, setPostData] = useState([]);
@@ -23,8 +23,29 @@ export default function TableComponent() {
 
 
     useEffect(() => {
-        FirebaseService.getDataList('posts', (dataReceived) => setPostData(dataReceived), numberPosts);
+        var user = firebaseAuth.currentUser;
+        firebaseDatabase.ref('posts').limitToLast(100)
+            .orderByChild("author")
+            .equalTo(user.uid)
+            .once('value', dataSnapshot => {
+                var items = [];
+                dataSnapshot.forEach(childSnapshot => {
+    
+                    let post = {
+                        key: childSnapshot.key,
+                        title: childSnapshot.val().title,
+                        content: childSnapshot.val().content,
+                        visible: childSnapshot.val().visible,
+                        created_at: (new Date(childSnapshot.val().created_at)).toString().replace("GMT-0300 (Horário Padrão de Brasília)", ''),
+                        slug: childSnapshot.val().slug
+                    }
+                items.push(post);
+                })
+                items.reverse();
+                setPostData(items);
+
     }) 
+})
 
     return (
         <>

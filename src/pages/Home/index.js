@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import FirebaseService from '../Firebase/firebaseService';
+import FirebaseService from '../../Firebase/firebaseService';
 import {Container, Button, Row, Col} from 'react-bootstrap';
 import CardComponent from '../components/Card';
 import Navbar from '../components/Navbar'

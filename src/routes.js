@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import UserProvider from "./pages/providers/UserProvider";
-import { UserContext } from "./pages/providers/UserProvider";
+import UserProvider from "./providers/UserProvider";
+import { UserContext } from "./providers/UserProvider";
 import Profile from './pages/Profile';
 
 import Home from './pages/Home';

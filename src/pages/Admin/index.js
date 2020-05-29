@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { firebaseImpl, firebaseDatabase, firebaseStorage } from '../Firebase/firebaseUtils';
+import { firebaseImpl, firebaseDatabase, firebaseStorage } from '../../Firebase/firebaseUtils';
 import { Container, Form, Button, Spinner, Row, Col, Navbar, Image } from 'react-bootstrap';
 import TableComponent from '../components/Table';
 import './styles.css';

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Form, Button, Spinner } from 'react-bootstrap';
 import {Link, useHistory} from 'react-router-dom';
-import {firebaseAuth, firebaseDatabase} from '../Firebase/firebaseUtils';
+import {firebaseAuth, firebaseDatabase} from '../../Firebase/firebaseUtils';
 
 export default function SignUp() {
 
@@ -42,7 +42,7 @@ export default function SignUp() {
 
     return (
         <Container fluid className="center-block">
-            <h1>Sign In</h1>
+            <h1>Sign Up</h1>
             <Container className="form-login-container justify-content-center">
                 <Form onSubmit={handleSubmit}>
                 <Form.Control
@@ -85,7 +85,7 @@ export default function SignUp() {
                         required
                         style={{ marginBottom: "5px" }}
                     />
-                    <Button disabled={isInvalid} style={{ width: "100%", marginBottom: "10px", height: "3em" }} type="submit">{loading ? <Spinner animation="border" variant="light" /> : "sign in"}</Button>
+                    <Button disabled={isInvalid} style={{ width: "100%", marginBottom: "10px", height: "3em" }} type="submit">{loading ? <Spinner animation="border" variant="light" /> : "Sign Up"}</Button>
                 </Form>
                 <div style={{ marginBottom: "10px" }} className="text-center my-3">
                     Already have an account?{" "}

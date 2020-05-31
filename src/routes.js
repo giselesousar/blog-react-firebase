@@ -1,6 +1,5 @@
 import React, {useContext} from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import UserProvider from "./providers/UserProvider";
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import { UserContext } from "./providers/UserProvider";
 import Profile from './pages/Profile';
 
@@ -13,12 +12,13 @@ import PwReset from './pages/PwReset';
 
 
 export default function Routes(){
-    const user = useContext(UserContext);
+    var user = useContext(UserContext);
     return(
-    <UserProvider>
-         <BrowserRouter>
+    <UserContext.Consumer>
+        {(user) => (
+            <BrowserRouter> 
             <Switch>
-                <Route path={process.env.PUBLIC_URL + '/profile'} exact component={Profile}/>
+                { user!== null? <Route path={process.env.PUBLIC_URL + '/profile'} exact component={Profile}/> : null}
                 <Route path={process.env.PUBLIC_URL + '/'} exact component={Home}/>
                 <Route path={process.env.PUBLIC_URL + '/post/:slug'} exact component={Post}/>
                 <Route path={process.env.PUBLIC_URL + "/admin"} component={Admin}/>
@@ -26,7 +26,8 @@ export default function Routes(){
                 <Route path={process.env.PUBLIC_URL + "/signup"} component={SignUp}/>
                 <Route path={process.env.PUBLIC_URL + "/pw-reset"} component={PwReset}/>
             </Switch>
-        </BrowserRouter>
-    </UserProvider>
+            </BrowserRouter>
+        )}
+    </UserContext.Consumer>
     );
 }

@@ -16,7 +16,7 @@ export default function CardComponent(props) {
                 <Card.Text>
                     {props.date}
                 </Card.Text>
-                <Button style={{backgroundColor: "#8aa163", borderColor: "transparent"}}><Link style= {{color: "#fff"}}  className="links-post" to={{
+                <Button variant="secondary"><Link style= {{color: "#fff"}}  className="links-post" to={{
                     pathname: `/post/${props.slug}`,
                     state: { title: props.title, content:props.content, date: props.date }
                 }}> See post </Link></Button>

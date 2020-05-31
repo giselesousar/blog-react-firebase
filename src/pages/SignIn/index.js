@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {Container, Form, Button, Spinner} from 'react-bootstrap';
 import {firebaseAuth} from '../../Firebase/firebaseUtils';
 import {useHistory, Link} from 'react-router-dom';
+import './styles.css';
 
 export default function SignIn(){
 

@@ -5,9 +5,7 @@ import './styles.css';
 
 export default function NavbarComponent() {
   return (
-    <Navbar fixed="top" style={{
-      backgroundColor: "#8aa163",
-    }} expand="lg">
+    <Navbar fixed="top" bg="secondary" expand="lg">
       <Container>
         <Navbar.Brand style={{color: "#fff"}}> <Link className="links" to="/">Blog</Link></Navbar.Brand>
         <Navbar.Toggle />

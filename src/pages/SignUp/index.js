@@ -89,7 +89,7 @@ export default function SignUp() {
                 </Form>
                 <div style={{ marginBottom: "10px" }} className="text-center my-3">
                     Already have an account?{" "}
-                    <Link to="/" className="text-blue-500 hover:text-blue-600">
+                    <Link to="/signin" className="text-blue-500 hover:text-blue-600">
                         Sign in here
           </Link>{" "}
                 </div>

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { UserContext } from '../../providers/UserProvider';
 import {Navbar, Button, Col, Row, Form} from 'react-bootstrap';
 import TableComponent from '../components/Table';
@@ -13,10 +13,12 @@ export default function Profile(){
     const [isChecked, setIsChecked] = useState(false);
     const [error, setError] = useState(null);
 
+    const history = useHistory();
+
     function handleLogout(){
         firebaseAuth.signOut()
             .then(() => {
-                //history.push('/')
+                history.push('/signin')
             })
             .catch(function (err) {
                 setError(err)
@@ -24,6 +26,7 @@ export default function Profile(){
     }
     function handleNewPost(e){
         e.preventDefault();
+        if(user !== null){
         var user = firebaseAuth.currentUser;
         var ref = firebaseDatabase.ref('posts').push();
         const slug = slugify(title);
@@ -36,15 +39,13 @@ export default function Profile(){
             .catch(function (err) {
                 setError(err);
             })
-
+        }
     }
     function handleChecked(){
         isChecked ? setIsChecked(false) : setIsChecked(true);
     }
 
     return(
-        <>
-        {user ?
         <>
              <Navbar>
                 <Navbar.Brand href="#home">Profile</Navbar.Brand>
@@ -57,6 +58,7 @@ export default function Profile(){
             </Navbar>
                 <Row>
                     <Col className="coluna-1">
+                    <p>{user.email}</p>
                         <Form onSubmit={handleNewPost} className="form-newpost">
                             <Form.Group>
                                 <Form.Control
@@ -88,8 +90,7 @@ export default function Profile(){
                         <TableComponent />
                     </Col>
                 </Row>
-        </>
-        : <Redirect to="/"/>}
+                        {error && <p>{error}</p>}
         </>
         
     )

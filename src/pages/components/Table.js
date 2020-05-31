@@ -24,6 +24,7 @@ export default function TableComponent() {
 
     useEffect(() => {
         var user = firebaseAuth.currentUser;
+        if(user !== null){
         firebaseDatabase.ref('posts').limitToLast(100)
             .orderByChild("author")
             .equalTo(user.uid)
@@ -45,7 +46,7 @@ export default function TableComponent() {
                 setPostData(items);
 
     }) 
-})
+}})
 
     return (
         <>
@@ -55,7 +56,7 @@ export default function TableComponent() {
                     <th>Key</th>
                     <th>Title</th>
                     <th>Date</th>
-                    <th>url</th>
+                    <th>Visible</th>
                     <th></th>
                 </tr>
             </thead>
@@ -63,10 +64,10 @@ export default function TableComponent() {
             {postData.map(post => {
             return (
                 <tr>
-                    <td>{post[0]}</td>
-                    <td>{post[1]}</td>
-                    <td>{post[3]}</td>
-                    <td>{post[5]}</td>
+                    <td>{post.key}</td>
+                    <td>{post.title}</td>
+                    <td>{post.created_at}</td>
+                    <td>{(post.visible).toString()}</td>
                     <td><Button variant="link" onClick={() => handleDeletePost(post[0])}>Delete</Button><Button variant="link">Edit</Button></td>
                 </tr>
             )

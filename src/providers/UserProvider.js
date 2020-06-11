@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
 import { firebaseAuth } from '../Firebase/firebaseUtils';
-import Routes from '../routes';
 
 
 export const UserContext = createContext({ user: null });
@@ -21,7 +20,7 @@ function UserProvider(props){
 
   return (
       <UserContext.Provider value={user}>
-        <Routes/>
+        {props.children}
       </UserContext.Provider>
     );
 }

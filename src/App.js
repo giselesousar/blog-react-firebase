@@ -3,9 +3,13 @@ import React from 'react';
 import UserProvider from './providers/UserProvider';
 
 import './global.css'
+import Routes from './routes';
+
 function App() {
   return (
-    <UserProvider />
+    <UserProvider>
+      <Routes/>
+    </UserProvider>
   );
 }
 
